@@ -15,6 +15,7 @@
 		551F9FA020055E8A00A1EAE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 551F9F9E20055E8A00A1EAE0 /* LaunchScreen.storyboard */; };
 		551F9FAB20055E8A00A1EAE0 /* HSEBuildingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551F9FAA20055E8A00A1EAE0 /* HSEBuildingsTests.swift */; };
 		551F9FB620055E8A00A1EAE0 /* HSEBuildingsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551F9FB520055E8A00A1EAE0 /* HSEBuildingsUITests.swift */; };
+		5583646F203861AE0025EF13 /* MapMakerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5583646E203861AE0025EF13 /* MapMakerVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		551F9FB120055E8A00A1EAE0 /* HSEBuildingsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HSEBuildingsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		551F9FB520055E8A00A1EAE0 /* HSEBuildingsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSEBuildingsUITests.swift; sourceTree = "<group>"; };
 		551F9FB720055E8A00A1EAE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5583646E203861AE0025EF13 /* MapMakerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMakerVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				551F9F9E20055E8A00A1EAE0 /* LaunchScreen.storyboard */,
 				551F9FA120055E8A00A1EAE0 /* Info.plist */,
 				551F9F9920055E8A00A1EAE0 /* HSEBuildings.xcdatamodeld */,
+				5583646E203861AE0025EF13 /* MapMakerVC.swift */,
 			);
 			path = HSEBuildings;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 			files = (
 				551F9F9520055E8A00A1EAE0 /* ViewController.swift in Sources */,
 				551F9F9B20055E8A00A1EAE0 /* HSEBuildings.xcdatamodeld in Sources */,
+				5583646F203861AE0025EF13 /* MapMakerVC.swift in Sources */,
 				551F9F9320055E8A00A1EAE0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -433,6 +437,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NC3NUX9MDW;
 				INFOPLIST_FILE = HSEBuildings/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = apple.HSEBuildings;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -448,6 +453,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NC3NUX9MDW;
 				INFOPLIST_FILE = HSEBuildings/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = apple.HSEBuildings;
 				PRODUCT_NAME = "$(TARGET_NAME)";
