@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55109B4C217BC948007AD617 /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = 55109B4B217BC948007AD617 /* test.json */; };
 		551F9F9320055E8A00A1EAE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551F9F9220055E8A00A1EAE0 /* AppDelegate.swift */; };
 		551F9F9520055E8A00A1EAE0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551F9F9420055E8A00A1EAE0 /* ViewController.swift */; };
 		551F9F9820055E8A00A1EAE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 551F9F9620055E8A00A1EAE0 /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		55109B4B217BC948007AD617 /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
 		551F9F8F20055E8A00A1EAE0 /* HSEBuildings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HSEBuildings.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		551F9F9220055E8A00A1EAE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		551F9F9420055E8A00A1EAE0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +80,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		55109B48217B7BA1007AD617 /* mapsJson */ = {
+			isa = PBXGroup;
+			children = (
+				55109B4B217BC948007AD617 /* test.json */,
+			);
+			path = mapsJson;
+			sourceTree = "<group>";
+		};
 		551F9F8620055E8A00A1EAE0 = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +111,7 @@
 		551F9F9120055E8A00A1EAE0 /* HSEBuildings */ = {
 			isa = PBXGroup;
 			children = (
+				55109B48217B7BA1007AD617 /* mapsJson */,
 				551F9F9220055E8A00A1EAE0 /* AppDelegate.swift */,
 				551F9F9420055E8A00A1EAE0 /* ViewController.swift */,
 				551F9F9620055E8A00A1EAE0 /* Main.storyboard */,
@@ -239,6 +250,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				551F9FA020055E8A00A1EAE0 /* LaunchScreen.storyboard in Resources */,
+				55109B4C217BC948007AD617 /* test.json in Resources */,
 				551F9F9D20055E8A00A1EAE0 /* Assets.xcassets in Resources */,
 				551F9F9820055E8A00A1EAE0 /* Main.storyboard in Resources */,
 			);

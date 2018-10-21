@@ -28,6 +28,8 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITextFieldDelegat
     var numberOfPoints = 39
     var arrayOfPoints = Array<String>()
     var arrayOfPointsToShow = Array<String>()
+    var arrayFromJson = Array<Any>()
+    var dictionaryOfPointsFromJson = [Int:CGPoint]()
     var dictionaryOfPoints = ["Вход/Выход":0,
                               "Диспетчерская":23,
                               "Лестница №1":24,
@@ -346,6 +348,19 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITextFieldDelegat
             v.removeFromSuperview()
         }
         y.image = UIImage(named:"2_этаж")
+      
+        //чтение тестового файла json
+        readJson(name: "test")
+        print(arrayFromJson)
+
+        //отрисовка линий из прочитанного json файла с параллельным запоминанием точек в словарь
+        createLinesFromJson()
+        
+        print(dictionaryOfPointsFromJson)
+        
+        //отрисовка точек из заполненного словаря по линиям из json файла
+        createPointsFromJson()
+        
     }
     
     
@@ -377,6 +392,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITextFieldDelegat
 //  добавление промежуточных точек
     func addIntermediatePoint(x1:Int,y1:Int,wid:Int,hei:Int, tag:Int){
         let w = UIView(frame: CGRect(x: x1, y: y1, width: wid, height: hei))
+        w.layer.cornerRadius = w.frame.size.width/2
         w.tag = tag
         w.backgroundColor = UIColor.clear
         y.addSubview(w)
@@ -608,6 +624,109 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITextFieldDelegat
         addIntermediatePoint(x1: 4310, y1: 2147, wid: 30, hei: 30, tag: 15)
     
     
+    }
+    
+    
+    
+    func readJson(name:String){
+        if let filePath = Bundle.main.path(forResource: name, ofType: "json"),
+            let data = NSData(contentsOfFile: filePath) {
+            do {
+                
+                let jsonData = try JSONSerialization.jsonObject(with: data as Data, options: JSONSerialization.ReadingOptions.mutableContainers) as! [Any]
+                //                print((jsonData[0] as! NSDictionary)["id"]!)
+                arrayFromJson = jsonData
+            }
+            catch {
+                //Handle error
+            }
+        }
+    }
+    
+    //отрисовка линий из прочитанного json файла с параллельным запоминанием точек в словарь
+    func createLinesFromJson(){
+        
+        if arrayFromJson.count != 0{
+            
+            for i in 0...arrayFromJson.count-1{
+                let startX:Double = (arrayFromJson[i] as! NSDictionary)["startX"]! as! Double
+                print(startX)
+                let endX:Double = (arrayFromJson[i] as! NSDictionary)["endX"]! as! Double
+                print(endX)
+                let startY:Double = (arrayFromJson[i] as! NSDictionary)["startY"]! as! Double
+                print(startY)
+                let endY:Double = (arrayFromJson[i] as! NSDictionary)["endY"]! as! Double
+                print(endY)
+                let length:Double = sqrt((Double(pow(Double(endX-startX),2) + pow(Double(endY-startY),2))))
+                print(length)
+                
+                
+                if (startX == endX){
+                    
+                    if(startY > endY){
+                        addLine(x1: Int(round(startX-15.0)), y1: Int(round(startY)), wid: 30, hei: Int(round(length)), resId: "1_2")
+                    }else{
+                        addLine(x1: Int(round(startX-15.0)), y1: Int(round(endY)), wid: 30, hei: Int(round(length)), resId: "1_2")
+                    }
+                    
+                }else if (startY == endY){
+                    
+                    if(startX < endX){
+                        addLine(x1: Int(round(startX)), y1: Int(round(startY-15.0)), wid: Int(round(length)), hei: 30, resId: "1_2")
+                    }else{
+                        addLine(x1: Int(round(endX)), y1: Int(round(startY-15.0)), wid: Int(round(length)), hei: 30, resId: "1_2")
+                    }
+                    
+                }else if(endX > startX && endY < startY){
+                    
+                    let alpha = asin(fabs((endY-startY)/length))
+                    
+                    addRotatedLine(x1: Int(round(startX-(15.0*sin(alpha)))), y1: Int(round(startY-(15.0*cos(alpha)))), wid: Int(round(length)), hei: 30, angle: CGFloat(-alpha*180/Double.pi), resId: "1_2")
+                    
+                }else if(endX > startX && endY > startY){
+                    
+                    let alpha = asin(fabs((endY-startY)/length))
+                    
+                    addRotatedLine(x1: Int(round(startX+(15.0*sin(alpha)))), y1: Int(round(startY-(15.0*cos(alpha)))), wid: Int(round(length)), hei: 30, angle: CGFloat(alpha*180/Double.pi), resId: "1_2")
+                    
+                }else if(endX < startX && endY < startY){
+                    
+                    let alpha = acos(fabs((endY-startY)/length))
+                    
+                    addRotatedLine(x1: Int(round(startX-(15.0*cos(alpha)))), y1: Int(round(startY+(15.0*sin(alpha)))), wid:Int(round(length)), hei: 30, angle: CGFloat(-alpha*180/Double.pi-90), resId: "1_2")
+                    
+                }else if(endX < startX && endY > startY){
+                    
+                    let alpha = acos(fabs((endY-startY)/length))
+                    
+                    addRotatedLine(x1: Int(round(startX+(15.0*cos(alpha)))), y1: Int(round(startY+(15.0*sin(alpha)))), wid: Int(round(length)), hei: 30, angle: CGFloat(alpha*180/Double.pi+90), resId: "1_2")
+                    
+                }
+                
+                savePointToDictionary(point: CGPoint.init(x: round(startX-15.0), y: round(startY-15.0)))
+                savePointToDictionary(point: CGPoint.init(x: round(endX-15.0), y: round(endY-15.0)))
+
+            }
+        }else{
+            print("Json пуст или не прочитан!")
+        }
+        
+    }
+    
+    //запоминание точек в словарь
+    func savePointToDictionary(point:CGPoint){
+        if (!dictionaryOfPointsFromJson.values.contains(point)){
+            dictionaryOfPointsFromJson[dictionaryOfPointsFromJson.keys.count] = point
+        }
+    }
+    
+    //отрисовка точек из заполненного словаря по линиям из json файла
+    func createPointsFromJson(){
+        
+        for i in dictionaryOfPointsFromJson.keys{
+            addIntermediatePoint(x1: Int(dictionaryOfPointsFromJson[i]!.x), y1: Int(dictionaryOfPointsFromJson[i]!.y), wid: 30, hei: 30, tag: i)
+        }
+        
     }
 }
 

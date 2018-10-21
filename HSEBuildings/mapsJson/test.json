@@ -1,0 +1,82 @@
+[
+	{
+		"id": 0,
+		"startX": 168,
+		"startY": 232,
+		"endX": 227,
+		"endY": 234,
+		"distance": 59
+	},
+	{
+		"id": 1,
+		"startX": 227,
+		"startY": 234,
+		"endX": 299,
+		"endY": 184,
+		"distance": 87
+	},
+	{
+		"id": 2,
+		"startX": 299,
+		"startY": 184,
+		"endX": 341,
+		"endY": 328,
+		"distance": 150
+	},
+	{
+		"id": 3,
+		"startX": 341,
+		"startY": 328,
+		"endX": 267,
+		"endY": 362,
+		"distance": 81
+	},
+	{
+		"id": 4,
+		"startX": 267,
+		"startY": 362,
+		"endX": 436,
+		"endY": 420,
+		"distance": 178
+	},
+	{
+		"id": 5,
+		"startX": 436,
+		"startY": 420,
+		"endX": 433,
+		"endY": 132,
+		"distance": 288
+	},
+	{
+		"id": 6,
+		"startX": 433,
+		"startY": 132,
+		"endX": 294,
+		"endY": 74,
+		"distance": 150
+	},
+	{
+		"id": 7,
+		"startX": 294,
+		"startY": 74,
+		"endX": 299,
+		"endY": 184,
+		"distance": 110
+	},
+	{
+		"id": 8,
+		"startX": 299,
+		"startY": 184,
+		"endX": 161,
+		"endY": 54,
+		"distance": 189
+	},
+	{
+		"id": 9,
+		"startX": 161,
+		"startY": 54,
+		"endX": 168,
+		"endY": 232,
+		"distance": 178
+	}
+]
